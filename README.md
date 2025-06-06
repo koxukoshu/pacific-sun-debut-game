@@ -1,5 +1,7 @@
 # pacific-sun-debut-title
 
-koxukoshu | ash | chescasxtn
+Project Manager: koxukoshu
+Lead Developer: ash
+Lead Designer: chescasxtn
 
-a highly-addictive arcade web game based on the filipino childhood experience of SIPA. 
+TANSAN: kick adventure, a highly-addictive arcade web game based on the filipino childhood experience of sipa.
