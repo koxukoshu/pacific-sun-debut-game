@@ -16,7 +16,6 @@ func _input_event(viewport, event, shape_idx):
 radius = 28.0713
 
 [node name="Toy" type="RigidBody2D"]
-input_pickable = true
 script = SubResource("GDScript_tvsie")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

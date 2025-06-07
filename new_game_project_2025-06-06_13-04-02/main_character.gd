@@ -3,6 +3,7 @@ extends Sprite2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var kick_area: Area2D = $KickArea 
+@onready var kick_sfx: AudioStreamPlayer2D = $kick_sfx
 
 var is_kicking = false
 
@@ -40,6 +41,7 @@ func _do_kick() -> void:
 func _on_kick_area_body_entered(body: Node) -> void:
 	if is_kicking == true: # Ensure the kick is active
 		if body is RigidBody2D: # Only affect RigidBody2D nodes
+			kick_sfx.play()
 			print("Kicked: ", body.name)
 
 			var base_vertical_kick_strength = 800.0   # Base strength for the upward kick
