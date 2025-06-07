@@ -241,5 +241,4 @@ position = Vector2(608, 569)
 
 [node name="toy" parent="." instance=ExtResource("4_1bvp3")]
 position = Vector2(604, 144)
-gravity_scale = 1.5
 script = null
