@@ -173,7 +173,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"kicking",
-"speed": 14.0
+"speed": 17.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -216,9 +216,9 @@ texture_filter = 1
 position = Vector2(-2.99994, -7.99998)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_wcpx6")
-animation = &"running"
+animation = &"kicking"
 autoplay = "default"
-frame_progress = 0.317451
+frame_progress = 0.0622147
 
 [node name="KickArea" type="Area2D" parent="."]
 

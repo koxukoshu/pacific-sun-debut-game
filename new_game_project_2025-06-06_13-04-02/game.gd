@@ -7,9 +7,6 @@ extends Node
 func _ready() -> void:
 	game_over.visible = false
 
-	# Connect the toy's collision signal to this script
-	toy.connect("game_over_triggered", Callable(self, "trigger_game_over"))
-
 func _on_play_again_pressed() -> void:
 	get_tree().reload_current_scene()
 

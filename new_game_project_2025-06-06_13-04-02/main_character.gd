@@ -37,10 +37,10 @@ func _do_hard_kick() -> void:
 	kick_area.monitoring = true # Enable the hitbox for the kick
 
 	# Wait for a short duration, then disable the hitbox and end the kick
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(0.2).timeout
 	kick_area.monitoring = false
 	is_hard_kicking = false
-
+	
 # Initiates the light kick attack
 func _do_light_kick() -> void:
 	is_light_kicking = true
