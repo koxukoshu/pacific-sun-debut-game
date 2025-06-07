@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctyjs8a13w3mq"]
+[gd_scene load_steps=10 format=3 uid="uid://ctyjs8a13w3mq"]
 
 [ext_resource type="Script" uid="uid://5cyaq4n8yomc" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="Texture2D" uid="uid://btt0w2fvl2v0y" path="res://Blue.png" id="1_sb48q"]
@@ -220,6 +220,8 @@ texture = ExtResource("2_t88pq")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jw0ju")
 
+[sub_resource type="SystemFont" id="SystemFont_ryrav"]
+
 [node name="Game" type="Node"]
 script = ExtResource("1_7jktm")
 
@@ -267,6 +269,7 @@ offset_left = 33.0
 offset_top = 204.0
 offset_right = 1119.0
 offset_bottom = 382.0
+theme_override_fonts/font = SubResource("SystemFont_ryrav")
 theme_override_font_sizes/font_size = 50
 text = "Game Over"
 horizontal_alignment = 1

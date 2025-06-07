@@ -5,7 +5,7 @@ extends Sprite2D
 @onready var kick_area: Area2D = $KickArea 
 @onready var kick_sfx: AudioStreamPlayer2D = $kick_sfx
 
-var is_hard_kicking = false
+var is_heavy_kicking = false
 var is_light_kicking = false
 
 func _ready() -> void:
@@ -21,25 +21,25 @@ func _process(delta: float) -> void:
 	global_position = get_global_mouse_position()
 
 	# Handle kick input
-	if Input.is_action_just_pressed("hard_kick") and not is_hard_kicking:
-		_do_hard_kick()
+	if Input.is_action_just_pressed("heavy_kick") and not is_heavy_kicking:
+		_do_heavy_kick()
 
 	if Input.is_action_just_pressed("light_kick") and not is_light_kicking:
 		_do_light_kick()
 		
-	if not (is_hard_kicking or is_light_kicking):
+	if not (is_heavy_kicking or is_light_kicking):
 		animated_sprite_2d.play("default")
 
-# Initiates the hard kick attack
-func _do_hard_kick() -> void:
-	is_hard_kicking = true
+# Initiates the heavy kick attack
+func _do_heavy_kick() -> void:
+	is_heavy_kicking = true
 	animated_sprite_2d.play("kicking")
 	kick_area.monitoring = true # Enable the hitbox for the kick
 
 	# Wait for a short duration, then disable the hitbox and end the kick
 	await get_tree().create_timer(0.2).timeout
 	kick_area.monitoring = false
-	is_hard_kicking = false
+	is_heavy_kicking = false
 	
 # Initiates the light kick attack
 func _do_light_kick() -> void:
@@ -53,7 +53,7 @@ func _do_light_kick() -> void:
 	is_light_kicking = false
 	
 func _on_kick_area_body_entered(body: Node) -> void:
-	if (is_hard_kicking or is_light_kicking) and body is RigidBody2D:
+	if (is_heavy_kicking or is_light_kicking) and body is RigidBody2D:
 		kick_sfx.play()
 		print("Kicked: ", body.name)
 
