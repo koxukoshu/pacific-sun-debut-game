@@ -11,8 +11,8 @@ extends Node2D
 
 # Coin and Scoring System Variables
 @export var coin_scene: PackedScene # Export a variable to link your Coin.tscn
-@export var min_x: float = 70
-@export var max_x: float = 830
+@export var min_x: float = 80
+@export var max_x: float = 800
 @export var min_y: float = 50
 @export var max_y: float = 420
 
