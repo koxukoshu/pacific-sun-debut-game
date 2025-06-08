@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://ys455wqwtvmy"]
+
+[ext_resource type="Script" uid="uid://cu4rnnsj41ofm" path="res://bird.gd" id="1_crnqq"]
+[ext_resource type="Texture2D" uid="uid://np6lhngh7di3" path="res://BirdSprite.png" id="1_g5k2s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5k2s"]
+atlas = ExtResource("1_g5k2s")
+region = Rect2(0, 18, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crnqq"]
+atlas = ExtResource("1_g5k2s")
+region = Rect2(16, 18, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j88tq"]
+atlas = ExtResource("1_g5k2s")
+region = Rect2(32, 18, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cchwj"]
+atlas = ExtResource("1_g5k2s")
+region = Rect2(48, 18, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ljjq"]
+atlas = ExtResource("1_g5k2s")
+region = Rect2(64, 18, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axl6x"]
+atlas = ExtResource("1_g5k2s")
+region = Rect2(80, 18, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr30m"]
+atlas = ExtResource("1_g5k2s")
+region = Rect2(96, 18, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o5yp"]
+atlas = ExtResource("1_g5k2s")
+region = Rect2(112, 18, 16, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6nk3w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5k2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_crnqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j88tq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cchwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ljjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axl6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr30m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o5yp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k3v35"]
+radius = 18.0
+height = 62.0
+
+[node name="Bird" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_crnqq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 2)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_6nk3w")
+autoplay = "default"
+frame_progress = 0.726171
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_k3v35")
