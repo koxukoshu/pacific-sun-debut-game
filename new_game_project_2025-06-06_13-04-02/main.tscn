@@ -1,7 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://7lheahxcfdav"]
 
-[ext_resource type="PackedScene" uid="uid://ctyjs8a13w3mq" path="res://game.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bmpvp62wtvv4a" path="res://menu.tscn" id="1_ig7tw"]
 
 [node name="Node" type="Node"]
 
-[node name="Node" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Control" parent="." instance=ExtResource("1_ig7tw")]

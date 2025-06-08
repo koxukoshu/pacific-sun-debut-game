@@ -138,7 +138,7 @@ func on_coin_collected():
 	if current_score == 3:
 		spawn_and_start_moving_object()
 	if current_score == 10:
-		wind_strength = 120
+		wind_strength = 100
 		wind.visible = true
 		
 func update_score_display():
