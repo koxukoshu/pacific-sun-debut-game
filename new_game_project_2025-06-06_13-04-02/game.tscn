@@ -228,7 +228,7 @@ sources/0 = SubResource("TileSetAtlasSource_jw0ju")
 [sub_resource type="SystemFont" id="SystemFont_ryrav"]
 subpixel_positioning = 0
 
-[node name="Game" type="Node2D"]
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_7jktm")
 coin_scene = ExtResource("8_j5wjh")
 
@@ -264,6 +264,7 @@ theme_override_font_sizes/font_size = 30
 
 [node name="toy" parent="." groups=["toy"] instance=ExtResource("4_3mrqo")]
 position = Vector2(604, 144)
+gravity_scale = 0.8
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 20.21)
 script = ExtResource("6_ryrav")
@@ -320,6 +321,62 @@ text = "Play Again"
 
 [node name="Wind" parent="." instance=ExtResource("11_mfdv2")]
 position = Vector2(598, 270)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1222.0
+offset_top = -196.0
+offset_right = 1688.0
+offset_bottom = 945.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sb48q")
+stretch_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = -178.0
+offset_right = -94.0
+offset_bottom = 963.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sb48q")
+stretch_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = 646.0
+offset_right = 1687.0
+offset_bottom = 1190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sb48q")
+stretch_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = -480.0
+offset_right = 1687.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sb48q")
+stretch_mode = 1
 
 [connection signal="body_entered" from="toy" to="." method="_on_toy_body_entered"]
 [connection signal="body_entered" from="Coin" to="." method="_on_coin_body_entered"]
