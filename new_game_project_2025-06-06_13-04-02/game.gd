@@ -6,6 +6,7 @@ extends Node2D # Changed to Node2D to easily place objects at specific positions
 @onready var character: Sprite2D = $character
 @onready var bg_music_player: AudioStreamPlayer = $BgMusicPlayer
 @onready var coin: Area2D = $Coin
+@onready var score_sound: AudioStreamPlayer = $ScoreSound
 
 # Coin and Scoring System Variables
 @export var coin_scene: PackedScene # Export a variable to link your Coin.tscn
@@ -64,6 +65,7 @@ func _on_toy_body_entered(body: Node) -> void:
 
 # Coin Collection Function
 func on_coin_collected():
+	score_sound.play()
 	current_score += 1
 	update_score_display()
 	print("Coin collected! Score: ", current_score)

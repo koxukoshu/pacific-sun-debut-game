@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctyjs8a13w3mq"]
+[gd_scene load_steps=13 format=3 uid="uid://ctyjs8a13w3mq"]
 
 [ext_resource type="Script" uid="uid://5cyaq4n8yomc" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="Texture2D" uid="uid://btt0w2fvl2v0y" path="res://Blue.png" id="1_sb48q"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cq6ld5akvg3ps" path="res://toy.gd" id="6_ryrav"]
 [ext_resource type="AudioStream" uid="uid://bcbu337yrvapk" path="res://Iframe Jeremy Blake - Powerup_ ♫ NO COPYRIGHT 8-bit Music [l7SwiFWOQqM].mp3" id="7_eow3j"]
 [ext_resource type="PackedScene" uid="uid://c46g5fj1knrdh" path="res://coin.tscn" id="8_j5wjh"]
+[ext_resource type="AudioStream" uid="uid://eaa7qi3a871x" path="res://Score - Sound Effect for editing.mp3" id="9_vef74"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jw0ju"]
 texture = ExtResource("2_t88pq")
@@ -307,6 +308,9 @@ parameters/looping = true
 [node name="Coin" parent="." groups=["avoid"] instance=ExtResource("8_j5wjh")]
 position = Vector2(1022, 494)
 script = null
+
+[node name="ScoreSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_vef74")
 
 [connection signal="body_entered" from="toy" to="." method="_on_toy_body_entered"]
 [connection signal="pressed" from="GameOver/PlayAgain" to="." method="_on_play_again_pressed"]
