@@ -58,7 +58,7 @@ func _on_kick_area_body_entered(body: Node) -> void:
 		print("Kicked: ", body.name)
 
 		# --- Config ---
-		var kick_speed: float = 650.0 # Constant speed after kick
+		var kick_speed: float = 750.0 # Constant speed after kick
 		if is_light_kicking:
 			kick_speed = 220.0
 			
