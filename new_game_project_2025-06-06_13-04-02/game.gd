@@ -8,6 +8,7 @@ extends Node2D
 @onready var coin: Area2D = $Coin
 @onready var score_sound: AudioStreamPlayer = $ScoreSound
 @onready var bird: CharacterBody2D = $Bird
+@onready var bird_2: CharacterBody2D = $Bird2
 
 # Coin and Scoring System Variables
 @export var coin_scene: PackedScene # Export a variable to link your Coin.tscn
@@ -93,10 +94,28 @@ func spawn_and_start_moving_object():
 
 	bird.start_moving_to_target(target_coord)
 	bird.movement_reached_target.connect(on_character_object_reached_target)
+	
+func spawn_and_start_moving_object2():
+
+	# Random Y for the start point
+	var random_start_y = randf_range(min_y_path, max_y_path)
+	bird_2.position = Vector2(end_x_position, random_start_y) # Set its starting position
+
+	# Random Y for the end point
+	var random_end_y = randf_range(min_y_path, max_y_path)
+	var target_coord = Vector2(start_x_position, random_end_y) # Set the target coordinate
+
+	# Tell the new object to start moving to the target
+
+	bird_2.start_moving_to_target(target_coord)
+	bird_2.movement_reached_target.connect(on_character_object_reached_target2)
 
 func on_character_object_reached_target():
 	spawn_and_start_moving_object()
 
+func on_character_object_reached_target2():
+	spawn_and_start_moving_object2()
+	
 func spawn_initial_coin():
 	if coin_scene == null:
 		print("Error: Coin scene not set in MainGame script!")
@@ -140,6 +159,8 @@ func on_coin_collected():
 	if current_score == 10:
 		wind_strength = 80
 		wind.visible = true
+	if current_score == 18:
+		spawn_and_start_moving_object2()
 		
 func update_score_display():
 	if score_label:

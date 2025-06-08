@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctyjs8a13w3mq"]
+[gd_scene load_steps=16 format=3 uid="uid://ctyjs8a13w3mq"]
 
 [ext_resource type="Script" uid="uid://5cyaq4n8yomc" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="Texture2D" uid="uid://btt0w2fvl2v0y" path="res://Blue.png" id="1_sb48q"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://eaa7qi3a871x" path="res://Score - Sound Effect for editing.mp3" id="9_vef74"]
 [ext_resource type="PackedScene" uid="uid://ys455wqwtvmy" path="res://bird.tscn" id="10_hve3p"]
 [ext_resource type="PackedScene" uid="uid://bjdwblq7xoipy" path="res://wind.tscn" id="11_mfdv2"]
+[ext_resource type="PackedScene" uid="uid://l6mdvpk70ehx" path="res://bird2.tscn" id="12_iotsf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jw0ju"]
 texture = ExtResource("2_t88pq")
@@ -284,7 +285,7 @@ stream = ExtResource("9_vef74")
 volume_db = -15.0
 
 [node name="Bird" parent="." groups=["avoid"] instance=ExtResource("10_hve3p")]
-position = Vector2(1294, 141)
+position = Vector2(1415, 316)
 
 [node name="GameOver" type="Control" parent="."]
 process_mode = 3
@@ -296,10 +297,10 @@ offset_bottom = 46.0
 
 [node name="Panel" type="Panel" parent="GameOver"]
 layout_mode = 0
-offset_left = -164.0
-offset_top = -58.0
-offset_right = 1343.0
-offset_bottom = 756.0
+offset_left = -182.0
+offset_top = -56.0
+offset_right = 1325.0
+offset_bottom = 758.0
 
 [node name="Label" type="Label" parent="GameOver"]
 layout_mode = 0
@@ -393,6 +394,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_sb48q")
 stretch_mode = 1
+
+[node name="Bird2" parent="." groups=["avoid"] instance=ExtResource("12_iotsf")]
+position = Vector2(-268, 315)
 
 [connection signal="body_entered" from="toy" to="." method="_on_toy_body_entered"]
 [connection signal="body_entered" from="Coin" to="." method="_on_coin_body_entered"]

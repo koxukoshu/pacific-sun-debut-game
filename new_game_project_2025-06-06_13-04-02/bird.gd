@@ -1,7 +1,7 @@
 # CharacterMovingObject.gd (No changes from previous version)
 extends CharacterBody2D
 
-@export var move_speed: float = 200.0
+@export var move_speed: float = 300.0
 var target_position: Vector2 = Vector2.ZERO
 var is_moving: bool = false
 
