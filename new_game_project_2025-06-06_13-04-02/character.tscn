@@ -150,4 +150,5 @@ shape = SubResource("CircleShape2D_px5sl")
 
 [node name="kick_sfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_0qfo5")
+volume_db = -15.0
 pitch_scale = 0.8
