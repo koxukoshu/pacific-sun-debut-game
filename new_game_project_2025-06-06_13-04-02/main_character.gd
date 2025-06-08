@@ -58,9 +58,9 @@ func _on_kick_area_body_entered(body: Node) -> void:
 		print("Kicked: ", body.name)
 
 		# --- Config ---
-		var kick_speed: float = 750.0 # Constant speed after kick
+		var kick_speed: float = 650.0 # Constant speed after kick
 		if is_light_kicking:
-			kick_speed = 220.0
+			kick_speed = 250.0
 			
 		# --- Calculate direction from hit point (kick_area) to body's center ---
 		var hit_direction: Vector2 = body.global_position - kick_area.global_position

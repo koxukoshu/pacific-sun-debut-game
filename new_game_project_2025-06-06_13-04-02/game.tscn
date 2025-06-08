@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctyjs8a13w3mq"]
+[gd_scene load_steps=12 format=3 uid="uid://ctyjs8a13w3mq"]
 
 [ext_resource type="Script" uid="uid://5cyaq4n8yomc" path="res://game.gd" id="1_7jktm"]
 [ext_resource type="Texture2D" uid="uid://btt0w2fvl2v0y" path="res://Blue.png" id="1_sb48q"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://be66xjlnoqf34" path="res://character.tscn" id="3_r0x5m"]
 [ext_resource type="PackedScene" uid="uid://cnti4w2ymeon4" path="res://toy.tscn" id="4_3mrqo"]
 [ext_resource type="Script" uid="uid://cq6ld5akvg3ps" path="res://toy.gd" id="6_ryrav"]
+[ext_resource type="AudioStream" uid="uid://bcbu337yrvapk" path="res://Iframe Jeremy Blake - Powerup_ ♫ NO COPYRIGHT 8-bit Music [l7SwiFWOQqM].mp3" id="7_eow3j"]
+[ext_resource type="PackedScene" uid="uid://c46g5fj1knrdh" path="res://coin.tscn" id="8_j5wjh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jw0ju"]
 texture = ExtResource("2_t88pq")
@@ -223,20 +225,25 @@ sources/0 = SubResource("TileSetAtlasSource_jw0ju")
 [sub_resource type="SystemFont" id="SystemFont_ryrav"]
 subpixel_positioning = 0
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node2D"]
 script = ExtResource("1_7jktm")
+coin_scene = ExtResource("8_j5wjh")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 1181.0
+offset_bottom = 678.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_sb48q")
 stretch_mode = 1
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["avoid"]]
 scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_2v62t")
 format = 2
@@ -245,13 +252,21 @@ layer_0/tile_data = PackedInt32Array(1245184, 458752, 0, 1310720, 458752, 1, 124
 [node name="character" parent="." instance=ExtResource("3_r0x5m")]
 position = Vector2(608, 569)
 
-[node name="toy" parent="." instance=ExtResource("4_3mrqo")]
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 43.0
+offset_right = 251.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+
+[node name="toy" parent="." groups=["toy"] instance=ExtResource("4_3mrqo")]
 position = Vector2(604, 144)
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 20.21)
 script = ExtResource("6_ryrav")
 
 [node name="GameOver" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -276,6 +291,7 @@ text = "Game Over"
 horizontal_alignment = 1
 
 [node name="PlayAgain" type="Button" parent="GameOver"]
+process_mode = 3
 layout_mode = 0
 offset_left = 519.0
 offset_top = 366.0
@@ -284,5 +300,14 @@ offset_bottom = 402.0
 theme_override_font_sizes/font_size = 20
 text = "Play Again"
 
+[node name="BgMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_eow3j")
+parameters/looping = true
+
+[node name="Coin" parent="." groups=["avoid"] instance=ExtResource("8_j5wjh")]
+position = Vector2(1022, 494)
+script = null
+
 [connection signal="body_entered" from="toy" to="." method="_on_toy_body_entered"]
 [connection signal="pressed" from="GameOver/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="body_entered" from="Coin" to="." method="_on_coin_body_entered"]
