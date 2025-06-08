@@ -37,6 +37,8 @@ var time_until_wind_change: float = 0.0 # Timer to track when to change directio
 @onready var wind: Node2D = $Wind
 
 func _ready() -> void:
+	get_tree().paused = false # Pause the game
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN) # Hide mouse cursor for new game (as per previous suggestion)
 	game_over.visible = false
 	wind.visible = false
 	bg_music_player.play()
@@ -110,8 +112,6 @@ func move_coin_to_random_position(coin: Area2D):
 
 
 func _on_play_again_pressed() -> void:
-	get_tree().paused = false # Pause the game
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN) # Hide mouse cursor for new game (as per previous suggestion)
 	get_tree().reload_current_scene()
 
 func trigger_game_over():
@@ -138,7 +138,7 @@ func on_coin_collected():
 	if current_score == 3:
 		spawn_and_start_moving_object()
 	if current_score == 10:
-		wind_strength = 100
+		wind_strength = 80
 		wind.visible = true
 		
 func update_score_display():
@@ -151,3 +151,7 @@ func update_score_display():
 func _on_coin_body_entered(body: Node2D) -> void:
 	if body.is_in_group("toy"):
 		on_coin_collected()
+
+func _on_return_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://menu.tscn")

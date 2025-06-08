@@ -322,6 +322,15 @@ offset_bottom = 402.0
 theme_override_font_sizes/font_size = 20
 text = "Play Again"
 
+[node name="Return" type="Button" parent="GameOver"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 418.0
+offset_right = 678.0
+offset_bottom = 454.0
+theme_override_font_sizes/font_size = 20
+text = "Return to Main Menu"
+
 [node name="Wind" parent="." instance=ExtResource("11_mfdv2")]
 position = Vector2(598, 270)
 
@@ -388,3 +397,4 @@ stretch_mode = 1
 [connection signal="body_entered" from="toy" to="." method="_on_toy_body_entered"]
 [connection signal="body_entered" from="Coin" to="." method="_on_coin_body_entered"]
 [connection signal="pressed" from="GameOver/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="GameOver/Return" to="." method="_on_return_pressed"]
