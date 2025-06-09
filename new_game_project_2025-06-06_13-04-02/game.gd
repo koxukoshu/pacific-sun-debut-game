@@ -9,6 +9,7 @@ extends Node2D
 @onready var score_sound: AudioStreamPlayer = $ScoreSound
 @onready var bird: CharacterBody2D = $Bird
 @onready var bird_2: CharacterBody2D = $Bird2
+@onready var instructions: Sprite2D = $instructions
 
 # Coin and Scoring System Variables
 @export var coin_scene: PackedScene # Export a variable to link your Coin.tscn
@@ -37,7 +38,14 @@ var time_until_wind_change: float = 0.0 # Timer to track when to change directio
 
 @onready var wind: Node2D = $Wind
 
+var game_start = 0
+
 func _ready() -> void:
+	bird.visible = false
+	bird_2.visible = false
+	coin.visible = false
+	
+	
 	get_tree().paused = false # Pause the game
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN) # Hide mouse cursor for new game (as per previous suggestion)
 	game_over.visible = false
@@ -45,13 +53,19 @@ func _ready() -> void:
 	bg_music_player.play()
 	randomize() # Initialize random number generator
 	update_score_display() # Initialize score display
-
-	spawn_initial_coin()
 	
 	change_wind_direction()
 	
+	toy.gravity_scale = 0
+	
 	
 func _process(delta: float):
+	if game_start == 1:
+		coin.visible = true
+		toy.gravity_scale = 0.75
+		spawn_initial_coin()
+		instructions.visible = false
+		game_start += 1
 	var direction_to_toy = (toy.global_position - character.global_position).normalized()
 	character.rotation = direction_to_toy.angle() + 1.5708 * 2
 
@@ -81,7 +95,7 @@ func change_wind_direction():
 # --- END NEW ---
 
 func spawn_and_start_moving_object():
-
+	
 	# Random Y for the start point
 	var random_start_y = randf_range(min_y_path, max_y_path)
 	bird.position = Vector2(start_x_position, random_start_y) # Set its starting position
@@ -91,7 +105,8 @@ func spawn_and_start_moving_object():
 	var target_coord = Vector2(end_x_position, random_end_y) # Set the target coordinate
 
 	# Tell the new object to start moving to the target
-
+	
+	bird.visible = true
 	bird.start_moving_to_target(target_coord)
 	bird.movement_reached_target.connect(on_character_object_reached_target)
 	
@@ -106,7 +121,7 @@ func spawn_and_start_moving_object2():
 	var target_coord = Vector2(start_x_position, random_end_y) # Set the target coordinate
 
 	# Tell the new object to start moving to the target
-
+	bird_2.visible = true
 	bird_2.start_moving_to_target(target_coord)
 	bird_2.movement_reached_target.connect(on_character_object_reached_target2)
 
@@ -120,7 +135,7 @@ func spawn_initial_coin():
 	if coin_scene == null:
 		print("Error: Coin scene not set in MainGame script!")
 		return
-
+	
 	# Place the initial coin at a random position
 	move_coin_to_random_position(coin)
 
@@ -154,12 +169,12 @@ func on_coin_collected():
 	print("Coin collected! Score: ", current_score)
 
 	move_coin_to_random_position(coin)
-	if current_score == 3:
+	if current_score == 5:
 		spawn_and_start_moving_object()
-	if current_score == 10:
+	if current_score == 12:
 		wind_strength = 80
 		wind.visible = true
-	if current_score == 18:
+	if current_score == 20:
 		spawn_and_start_moving_object2()
 		
 func update_score_display():
@@ -176,3 +191,9 @@ func _on_coin_body_entered(body: Node2D) -> void:
 func _on_return_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://menu.tscn")
+
+
+func _on_character_kicked() -> void:
+	if game_start == 2:
+		pass
+	game_start += 1

@@ -8,6 +8,8 @@ extends Sprite2D
 var is_heavy_kicking = false
 var is_light_kicking = false
 
+signal kicked
+
 func _ready() -> void:
 	# Hide the system mouse cursor 
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -32,6 +34,7 @@ func _process(delta: float) -> void:
 
 # Initiates the heavy kick attack
 func _do_heavy_kick() -> void:
+	emit_signal("kicked")
 	is_heavy_kicking = true
 	animated_sprite_2d.play("heavy_kicking")
 	kick_area.monitoring = true # Enable the hitbox for the kick
@@ -41,8 +44,10 @@ func _do_heavy_kick() -> void:
 	kick_area.monitoring = false
 	is_heavy_kicking = false
 	
+	
 # Initiates the light kick attack
 func _do_light_kick() -> void:
+	emit_signal("kicked")
 	is_light_kicking = true
 	animated_sprite_2d.play("light_kicking")
 	kick_area.monitoring = true # Enable the hitbox for the kick
