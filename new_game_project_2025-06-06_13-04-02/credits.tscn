@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://71yhpvwh8ok"]
+
+[ext_resource type="Texture2D" uid="uid://d3jsxql8txyy3" path="res://credits.png" id="1_nm7lk"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -7.0
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 652.0
+texture = ExtResource("1_nm7lk")
+expand_mode = 1

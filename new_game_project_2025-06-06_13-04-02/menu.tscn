@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmpvp62wtvv4a"]
+[gd_scene load_steps=9 format=3 uid="uid://bmpvp62wtvv4a"]
 
 [ext_resource type="Script" uid="uid://mpvmen17ushh" path="res://control.gd" id="1_mae5d"]
 [ext_resource type="Texture2D" uid="uid://cysw5ja5xgh4k" path="res://TANSAN Kick Adventure.png" id="2_ouk20"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dwaolil1u245h" path="res://right1.png" id="5_l48gv"]
 [ext_resource type="Texture2D" uid="uid://dkges77phniav" path="res://right2.png" id="6_ecwwl"]
 [ext_resource type="AudioStream" uid="uid://bvfvfn2xi4g8b" path="res://button-click-sound-effect_PWzflLFl.mp3" id="7_ecwwl"]
+[ext_resource type="Texture2D" uid="uid://d3jsxql8txyy3" path="res://credits.png" id="8_kk3ma"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -52,5 +53,9 @@ texture_hover = ExtResource("6_ecwwl")
 stream = ExtResource("7_ecwwl")
 volume_db = -15.0
 
+[node name="credits2" type="Sprite2D" parent="."]
+position = Vector2(579, 305)
+texture = ExtResource("8_kk3ma")
+
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="credits" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
