@@ -336,8 +336,16 @@ offset_bottom = 454.0
 theme_override_font_sizes/font_size = 20
 text = "Return to Main Menu"
 
+[node name="score" type="Label" parent="GameOver"]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 285.0
+offset_right = 689.0
+offset_bottom = 391.0
+theme_override_font_sizes/font_size = 30
+
 [node name="Wind" parent="." instance=ExtResource("11_mfdv2")]
-position = Vector2(598, 270)
+position = Vector2(609, 293)
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 visible = false

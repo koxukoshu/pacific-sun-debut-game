@@ -28,6 +28,7 @@ var current_score: int = 0
 var current_coin_instance: Area2D # Hold a reference to the single coin instance
 
 @onready var score_label: Label = $ScoreLabel
+@onready var score: Label = $GameOver/score
 
 # --- NEW: Wind Variables ---
 @export var wind_strength: float = 0 # How strong the wind is
@@ -151,6 +152,7 @@ func _on_play_again_pressed() -> void:
 func trigger_game_over():
 	print("Game Over triggered")
 	game_over.visible = true
+	score.text = "You got " + str(current_score) + " points!"
 	bg_music_player.stop()
 	if current_coin_instance:
 		current_coin_instance.hide()
